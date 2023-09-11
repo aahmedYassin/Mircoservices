@@ -10,7 +10,12 @@ public class HomeController {
 
     @GetMapping("/hello")
     public String sayHello() {
-
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         return "hello yassin";
     }
 }

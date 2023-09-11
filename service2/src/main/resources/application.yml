@@ -10,3 +10,24 @@ eureka:
             default-zone: http://localhost:8761/eureka/
 instance:
     hostname: localhost
+
+resilience4j: 
+    circuitbreaker:
+        instances:
+            gomaa:
+                failureRateThreshold: 2
+                minimumNumberOfCalls: 5
+                slidingWindowType: COUNT_BASED
+                slidingWindowSize: 10
+                waitDurationInOpenState: 50s
+                permittedNumberOfCallsInHalfOpenState: 3
+    timelimiter:
+        metrics.enabled: true
+        instances:
+             gommaTime:
+                timeout-duration: 3s
+                cancel-running-future: true
+
+debug: true
+
+      
